@@ -33,4 +33,14 @@ class QuestionViewControllerTests:XCTestCase {
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
     }
     
+    // Here we need to check if the tableview will render the options if there is any
+    // So we need to setup the tableview datasource on the viewcontroller
+    // And at this stage we don't need any layout detail or fancy UITableViewCell
+    func test_viewDidLoad_withOneOption_rendersOneOptionText() {
+        let sut = QuestionViewController(question: "Q1", options:["A1"])
+        _ = sut.view
+        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        XCTAssertEqual(cell?.textLabel?.text, "A1")
+    }
+    
 }
