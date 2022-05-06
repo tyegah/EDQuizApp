@@ -18,4 +18,9 @@ class QuestionViewController: UIViewController {
         self.init()
         self.question = question
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.headerLabel.text = question
+    }
 }
