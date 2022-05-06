@@ -17,7 +17,7 @@ class QuestionViewControllerTests:XCTestCase {
     // NOTES:
     // We shouldn't invoke the viewDidLoad directly when testing on ViewController
     func test_viewDidLoad_rendersQuestionHeaderText() {
-        let sut = QuestionViewController(question: "Q1")
+        let sut = QuestionViewController(question: "Q1", options: [])
         _ = sut.view // This invokes the viewDidLoad
         XCTAssertEqual(sut.headerLabel.text, "Q1")
     }
@@ -30,7 +30,7 @@ class QuestionViewControllerTests:XCTestCase {
     func test_viewDidLoad_withNoOptions_rendersZeroOptions() {
         let sut = QuestionViewController(question: "Q1", options:[])
         _ = sut.view
-        XCTAssertEqual(sut.tableView.numberOfRows, 0)
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
     }
     
 }

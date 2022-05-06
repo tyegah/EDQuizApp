@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuestionViewController" customModule="EDQuizApp" customModuleProvider="target">
             <connections>
                 <outlet property="headerLabel" destination="a7c-Tn-LFi" id="5PO-Z6-dr8"/>
+                <outlet property="tableView" destination="sU2-J0-EGn" id="xRj-pV-MY8"/>
                 <outlet property="view" destination="iN0-l3-epB" id="cFq-ml-GZh"/>
             </connections>
         </placeholder>
@@ -26,6 +27,11 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sU2-J0-EGn">
+                    <rect key="frame" x="87" y="253" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

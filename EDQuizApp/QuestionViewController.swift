@@ -10,11 +10,12 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
     
     private var question:String = ""
     
-    convenience init(question:String) {
+    convenience init(question:String, options:[String]) {
         self.init()
         self.question = question
     }
