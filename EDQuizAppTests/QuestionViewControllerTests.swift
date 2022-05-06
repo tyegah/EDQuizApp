@@ -18,7 +18,19 @@ class QuestionViewControllerTests:XCTestCase {
     // We shouldn't invoke the viewDidLoad directly when testing on ViewController
     func test_viewDidLoad_rendersQuestionHeaderText() {
         let sut = QuestionViewController(question: "Q1")
-        _ = sut.view
+        _ = sut.view // This invokes the viewDidLoad
         XCTAssertEqual(sut.headerLabel.text, "Q1")
     }
+    
+    // The next thing to check after applying the header label text
+    // is to check for the options for the question
+    // In this case, we're checking if the there are zero options
+    // it won't show/render anything
+    // Because we're gonna show the options in tableview, here we're checking if the number of rows is 0
+    func test_viewDidLoad_withNoOptions_rendersZeroOptions() {
+        let sut = QuestionViewController(question: "Q1", options:[])
+        _ = sut.view
+        XCTAssertEqual(sut.tableView.numberOfRows, 0)
+    }
+    
 }
