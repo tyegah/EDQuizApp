@@ -57,18 +57,28 @@ class QuestionViewControllerTests:XCTestCase {
     // Test if there are two options on the tableview
     // The selection changes between the two options, the answer will be the last one selected
     func test_optionSelected_withTwoOptions_notifiesDelegateWithLastSelection() {
-        var receivedAnswer = ""
+        var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
         sut.tableView.select(row: 0)
-        XCTAssertEqual(receivedAnswer, "A1")
+        XCTAssertEqual(receivedAnswer, ["A1"])
         sut.tableView.select(row: 1)
-        XCTAssertEqual(receivedAnswer, "A2")
+        XCTAssertEqual(receivedAnswer, ["A2"])
+    }
+    
+    func test_optionSelected_withMultipleSelectionsEnabled_notifiesDelegateSelection() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
+        sut.tableView.allowsMultipleSelection = true
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        sut.tableView.select(row: 1)
+        XCTAssertEqual(receivedAnswer, ["A1", "A2"])
     }
 
     // MARK: Helpers
     private func makeSUT(question:String = "",
                          options:[String] = [],
-selection: @escaping (String) -> Void = { _ in }) -> QuestionViewController {
+selection: @escaping ([String]) -> Void = { _ in }) -> QuestionViewController {
         let sut = QuestionViewController(question: question,
                                          options:options,
                                          selection: selection)
