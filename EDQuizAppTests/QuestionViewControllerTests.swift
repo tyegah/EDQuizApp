@@ -76,7 +76,7 @@ class QuestionViewControllerTests:XCTestCase {
         sut.tableView.select(row: 0)
         XCTAssertEqual(receivedAnswer, ["A1"])
         XCTAssertEqual(callbackCount, 1)
-        sut.tableView.select(row: 1)
+        sut.tableView.deselect(row: 0)
         XCTAssertEqual(receivedAnswer, ["A1"])
         XCTAssertEqual(callbackCount, 1)
     }
