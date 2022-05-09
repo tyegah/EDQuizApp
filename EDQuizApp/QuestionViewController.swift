@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class QuestionViewController: UIViewController, UITableViewDataSource {
+class QuestionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
@@ -40,6 +40,10 @@ class QuestionViewController: UIViewController, UITableViewDataSource {
         let cell = dequeueCell(in: tableView)
         cell.textLabel?.text = options[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection?(options[indexPath.row])
     }
     
     private func dequeueCell(in tableView:UITableView) -> UITableViewCell {
