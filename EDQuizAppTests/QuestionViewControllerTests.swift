@@ -47,16 +47,16 @@ class QuestionViewControllerTests:XCTestCase {
     
     // Next, we need to handle when the answer cell is selected
     // It's gonna fire a callback or a delegate as received answer
-    func test_optionSelected_notifiesDelegate() {
-        var receivedAnswer = ""
-        let sut = makeSUT(options: ["A1"]) { receivedAnswer = $0 }
-        sut.tableView.select(row: 0)
-        XCTAssertEqual(receivedAnswer, "A1")
-    }
+//    func test_optionSelected_notifiesDelegate() {
+//        var receivedAnswer = ""
+//        let sut = makeSUT(options: ["A1"]) { receivedAnswer = $0 }
+//        sut.tableView.select(row: 0)
+//        XCTAssertEqual(receivedAnswer, "A1")
+//    }
     
     // Test if there are two options on the tableview
     // The selection changes between the two options, the answer will be the last one selected
-    func test_optionSelected_withTwoOptions_notifiesDelegateWhenSelectionChange() {
+    func test_optionSelected_withTwoOptions_notifiesDelegateWithLastSelection() {
         var receivedAnswer = ""
         let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
         sut.tableView.select(row: 0)
