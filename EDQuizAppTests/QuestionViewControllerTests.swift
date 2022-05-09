@@ -97,6 +97,8 @@ private extension UITableView {
     }
     
     func select(row:Int) {
-        delegate?.tableView?(self, didSelectRowAt: IndexPath(row: row, section: 0))
+        let indexPath = IndexPath(row: row, section: 0)
+        selectRow(at: indexPath, animated: false, scrollPosition: .none) // This needs to be called to mimic the row selection on tableview
+        delegate?.tableView?(self, didSelectRowAt: indexPath)
     }
 }

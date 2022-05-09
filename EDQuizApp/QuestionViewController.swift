@@ -43,7 +43,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selection?([options[indexPath.row]])
+        selection?(tableView.indexPathsForSelectedRows!.map { options[$0.row] })
     }
     
     private func dequeueCell(in tableView:UITableView) -> UITableViewCell {
