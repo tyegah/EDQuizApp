@@ -41,9 +41,7 @@ class QuestionViewControllerTests:XCTestCase {
     // So we need to setup the tableview datasource on the viewcontroller
     // And at this stage we don't need any layout detail or fancy UITableViewCell
     func test_viewDidLoad_withOneOption_rendersOneOptionText() {
-        let sut = makeSUT(options: ["A1"])
-        let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
-        XCTAssertEqual(cell?.textLabel?.text, "A1")
+        XCTAssertEqual(makeSUT(options: ["A1"]).tableView.title(at: 0), "A1")
     }
     
     
@@ -51,5 +49,15 @@ class QuestionViewControllerTests:XCTestCase {
         let sut = QuestionViewController(question: question, options:options)
         _ = sut.view
         return sut
+    }
+}
+
+private extension UITableView {
+    func cell(at row:Int) -> UITableViewCell? {
+        return dataSource?.tableView(self, cellForRowAt: IndexPath(row: row, section: 0))
+    }
+    
+    func title(at row:Int) -> String? {
+        return cell(at: row)?.textLabel?.text
     }
 }
