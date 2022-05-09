@@ -45,9 +45,25 @@ class QuestionViewControllerTests:XCTestCase {
         XCTAssertEqual(makeSUT(options: ["A1", "A2"]).tableView.title(at: 1), "A2")
     }
     
+    // Next, we need to handle when the answer cell is selected
+    // It's gonna fire a callback or a delegate as received answer
+    func test_optionSelected_notifiesDelegate() {
+        var receivedAnswer = ""
+        let sut = makeSUT(options: ["A1"]) {
+            receivedAnswer = $0
+        }
+        let indexPath = IndexPath(row: 0, section: 0)
+        sut.tableView.delegate?.tableView?(sut.tableView, didSelectRowAt: indexPath)
+        XCTAssertEqual(receivedAnswer, "A1")
+    }
     
-    private func makeSUT(question:String = "", options:[String] = []) -> QuestionViewController {
-        let sut = QuestionViewController(question: question, options:options)
+    
+    private func makeSUT(question:String = "",
+                         options:[String] = [],
+selection: @escaping (String) -> Void = { _ in }) -> QuestionViewController {
+        let sut = QuestionViewController(question: question,
+                                         options:options,
+                                         selection: selection)
         _ = sut.view
         return sut
     }
