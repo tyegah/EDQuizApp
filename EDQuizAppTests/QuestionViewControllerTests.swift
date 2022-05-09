@@ -26,21 +26,26 @@ class QuestionViewControllerTests:XCTestCase {
     // it won't show/render anything
     // Because we're gonna show the options in tableview, here we're checking if the number of rows is 0
     func test_viewDidLoad_withNoOptions_rendersZeroOptions() {
-        let sut = makeSUT(question: "Q1", options: []) // here we are putting the options as empty array because of the name of the test that describes the options as zero option (empty array)
+        let sut = makeSUT(options: []) // here we are putting the options as empty array because of the name of the test that describes the options as zero option (empty array)
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
+    }
+    
+    func test_viewDidLoad_withOneOption_rendersOneOption() {
+        let sut = makeSUT(options: ["A1"]) // here we are putting the options as empty array because of the name of the test that describes the options as zero option (empty array)
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
     }
     
     // Here we need to check if the tableview will render the options if there is any
     // So we need to setup the tableview datasource on the viewcontroller
     // And at this stage we don't need any layout detail or fancy UITableViewCell
     func test_viewDidLoad_withOneOption_rendersOneOptionText() {
-        let sut = makeSUT(question: "Q1", options: ["A1"])
+        let sut = makeSUT(options: ["A1"])
         let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
         XCTAssertEqual(cell?.textLabel?.text, "A1")
     }
     
     
-    private func makeSUT(question:String, options:[String] = []) -> QuestionViewController {
+    private func makeSUT(question:String = "", options:[String] = []) -> QuestionViewController {
         let sut = QuestionViewController(question: question, options:options)
         _ = sut.view
         return sut
