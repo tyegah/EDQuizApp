@@ -65,6 +65,22 @@ class QuestionViewControllerTests:XCTestCase {
         XCTAssertEqual(receivedAnswer, ["A2"])
     }
     
+    // Test if single selection is enabled, the deselection of the cell will not be called and the callback/delegate is not called with empty selection/array
+    func test_optionDeselected_withSingleSelection_doesNotNotifyDelegateWithEmptySelection() {
+        var receivedAnswer = [String]()
+        var callbackCount = 0
+        let sut = makeSUT(options: ["A1", "A2"]) {
+            receivedAnswer = $0
+            callbackCount+=1
+        }
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        XCTAssertEqual(callbackCount, 1)
+        sut.tableView.select(row: 1)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        XCTAssertEqual(callbackCount, 1)
+    }
+    
     func test_optionSelected_withMultipleSelectionsEnabled_notifiesDelegateSelection() {
         var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
