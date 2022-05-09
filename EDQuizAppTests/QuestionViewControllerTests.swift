@@ -74,6 +74,18 @@ class QuestionViewControllerTests:XCTestCase {
         sut.tableView.select(row: 1)
         XCTAssertEqual(receivedAnswer, ["A1", "A2"])
     }
+    
+    
+    // Test if deselection on cell will remove received answer
+    func test_optionDeselected_withMultipleSelectionsEnabled_notifiesDelegate() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
+        sut.tableView.allowsMultipleSelection = true
+        sut.tableView.select(row: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        sut.tableView.deselect(row: 0)
+        XCTAssertEqual(receivedAnswer, [])
+    }
 
     // MARK: Helpers
     private func makeSUT(question:String = "",
@@ -100,5 +112,11 @@ private extension UITableView {
         let indexPath = IndexPath(row: row, section: 0)
         selectRow(at: indexPath, animated: false, scrollPosition: .none) // This needs to be called to mimic the row selection on tableview
         delegate?.tableView?(self, didSelectRowAt: indexPath)
+    }
+    
+    func deselect(row:Int) {
+        let indexPath = IndexPath(row: row, section: 0)
+        deselectRow(at: indexPath, animated: false) // This needs to be called to mimic the row selection on tableview
+        delegate?.tableView?(self, didDeselectRowAt: indexPath)
     }
 }
