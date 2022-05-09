@@ -56,7 +56,7 @@ class QuestionViewControllerTests:XCTestCase {
     
     // Test if there are two options on the tableview
     // The selection changes between the two options, the answer will be the last one selected
-    func test_optionSelected_withTwoOptions_notifiesDelegateWithLastSelection() {
+    func test_optionSelected_withSingleSelection_notifiesDelegateWithLastSelection() {
         var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1", "A2"]) { receivedAnswer = $0 }
         sut.tableView.select(row: 0)
