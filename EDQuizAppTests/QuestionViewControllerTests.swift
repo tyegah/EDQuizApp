@@ -17,9 +17,7 @@ class QuestionViewControllerTests:XCTestCase {
     // NOTES:
     // We shouldn't invoke the viewDidLoad directly when testing on ViewController
     func test_viewDidLoad_rendersQuestionHeaderText() {
-        let sut = QuestionViewController(question: "Q1", options: [])
-        _ = sut.view // This invokes the viewDidLoad
-        XCTAssertEqual(sut.headerLabel.text, "Q1")
+        XCTAssertEqual(makeSUT(question: "Q1").headerLabel.text, "Q1")
     }
     
     // The next thing to check after applying the header label text
@@ -28,8 +26,7 @@ class QuestionViewControllerTests:XCTestCase {
     // it won't show/render anything
     // Because we're gonna show the options in tableview, here we're checking if the number of rows is 0
     func test_viewDidLoad_withNoOptions_rendersZeroOptions() {
-        let sut = QuestionViewController(question: "Q1", options:[])
-        _ = sut.view
+        let sut = makeSUT(question: "Q1", options: []) // here we are putting the options as empty array because of the name of the test that describes the options as zero option (empty array)
         XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
     }
     
@@ -37,10 +34,15 @@ class QuestionViewControllerTests:XCTestCase {
     // So we need to setup the tableview datasource on the viewcontroller
     // And at this stage we don't need any layout detail or fancy UITableViewCell
     func test_viewDidLoad_withOneOption_rendersOneOptionText() {
-        let sut = QuestionViewController(question: "Q1", options:["A1"])
-        _ = sut.view
+        let sut = makeSUT(question: "Q1", options: ["A1"])
         let cell = sut.tableView.dataSource?.tableView(sut.tableView, cellForRowAt: IndexPath(row: 0, section: 0))
         XCTAssertEqual(cell?.textLabel?.text, "A1")
     }
     
+    
+    private func makeSUT(question:String, options:[String] = []) -> QuestionViewController {
+        let sut = QuestionViewController(question: question, options:options)
+        _ = sut.view
+        return sut
+    }
 }
