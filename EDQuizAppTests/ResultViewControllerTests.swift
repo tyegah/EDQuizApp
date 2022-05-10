@@ -16,11 +16,13 @@ class ResultViewControllerTests:XCTestCase {
     
     // On testing the tableview it always starts with nothing on the table
     // and then it will gradually add one or two data inside the table and check if the data renders correctly
-    func test_viewDidLoad_withoutAnswers_doesNotRenderAnswers() {
-        XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
-    }
+//    func test_viewDidLoad_withoutAnswers_doesNotRenderAnswers() {
+//        XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
+//    }
+//
     
-    func test_viewDidLoad_withOneAnswer_rendersAnswers() {
+    func test_viewDidLoad_rendersAnswers() {
+        XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
         XCTAssertEqual(makeSUT(answers: ["A1"]).tableView.numberOfRows(inSection: 0), 1)
     }
     
