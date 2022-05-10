@@ -11,22 +11,24 @@ import XCTest
 
 class ResultViewControllerTests:XCTestCase {
     func test_viewDidLoad_rendersSummary() {
-        let sut = ResultViewController(summary: "a summary", answers:[])
-        _ = sut.view
-        XCTAssertEqual(sut.headerLabel.text, "a summary")
+        XCTAssertEqual(makeSUT(summary:"a summary").headerLabel.text, "a summary")
     }
     
     // On testing the tableview it always starts with nothing on the table
     // and then it will gradually add one or two data inside the table and check if the data renders correctly
     func test_viewDidLoad_withoutAnswers_doesNotRenderAnswers() {
-        let sut = ResultViewController(summary: "a summary", answers:[])
-        _ = sut.view
-        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
+        XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
     }
     
     func test_viewDidLoad_withOneAnswer_rendersAnswers() {
-        let sut = ResultViewController(summary: "a summary", answers:["A1"])
+        XCTAssertEqual(makeSUT(answers: ["A1"]).tableView.numberOfRows(inSection: 0), 1)
+    }
+    
+    // MARK: Helpers
+    
+    func makeSUT(summary:String = "", answers:[String] = []) -> ResultViewController {
+        let sut = ResultViewController(summary: summary, answers: answers)
         _ = sut.view
-        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 1)
+        return sut
     }
 }
