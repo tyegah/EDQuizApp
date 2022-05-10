@@ -16,6 +16,10 @@ class CorrectAnswerCell: UITableViewCell {
     
 }
 
+class WrongAnswerCell: UITableViewCell {
+    
+}
+
 class ResultViewController:UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
