@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 
 class ResultViewController:UIViewController {
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
     
     private var summary = ""
-    convenience init(summary:String) {
+    convenience init(summary:String, answers:[String]) {
         self.init()
         self.summary = summary
     }

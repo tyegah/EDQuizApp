@@ -11,8 +11,14 @@ import XCTest
 
 class ResultViewControllerTests:XCTestCase {
     func test_viewDidLoad_rendersSummary() {
-        let sut = ResultViewController(summary: "a summary")
+        let sut = ResultViewController(summary: "a summary", answers:[])
         _ = sut.view
         XCTAssertEqual(sut.headerLabel.text, "a summary")
+    }
+    
+    func test_viewDidLoad_withoutAnswers_doesNotRenderAnswers() {
+        let sut = ResultViewController(summary: "a summary", answers:[])
+        _ = sut.view
+        XCTAssertEqual(sut.tableView.numberOfRows(inSection: 0), 0)
     }
 }
