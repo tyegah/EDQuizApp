@@ -8,13 +8,21 @@
 import Foundation
 import UIKit
 
+struct AnswerViewModel {
+    let isCorrect:Bool
+}
+
+class CorrectAnswerCell: UITableViewCell {
+    
+}
+
 class ResultViewController:UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
     
     private var summary = ""
-    private var answers = [String]()
-    convenience init(summary:String, answers:[String]) {
+    private var answers = [AnswerViewModel]()
+    convenience init(summary:String, answers:[AnswerViewModel]) {
         self.init()
         self.summary = summary
         self.answers = answers
@@ -30,6 +38,6 @@ class ResultViewController:UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return CorrectAnswerCell()
     }
 }
