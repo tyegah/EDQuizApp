@@ -23,7 +23,7 @@ class ResultViewControllerTests:XCTestCase {
     
     func test_viewDidLoad_rendersAnswers() {
         XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
-        XCTAssertEqual(makeSUT(answers: ["A1"]).tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(makeSUT(answers: [makeDummyAnswer()]).tableView.numberOfRows(inSection: 0), 1)
     }
     
     // MARK: Helpers
@@ -32,5 +32,10 @@ class ResultViewControllerTests:XCTestCase {
         let sut = ResultViewController(summary: summary, answers: answers)
         _ = sut.view
         return sut
+    }
+    
+    // This is created to prevent the tests breaking when the answer's type is changed
+    func makeDummyAnswer() -> String {
+        return "an answer"
     }
 }
