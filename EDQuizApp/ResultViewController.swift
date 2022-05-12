@@ -10,11 +10,13 @@ import UIKit
 
 struct AnswerViewModel {
     let question:String
+    let answer:String
     let isCorrect:Bool
 }
 
 class CorrectAnswerCell: UITableViewCell {
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
 }
 
 class WrongAnswerCell: UITableViewCell {

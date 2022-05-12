@@ -39,10 +39,17 @@ class ResultViewControllerTests:XCTestCase {
         XCTAssertNotNil(cell)
     }
     
+    // On correct answer cell, we want to render the question and the answer on it. So, here we are testing if the cell is rendering the question and answer respectively
     func test_viewDidLoad_withCorrectAnswer_rendersQuestionText() {
-        let sut = makeSUT(answers:[AnswerViewModel(question: "Q1", isCorrect: true)])
+        let sut = makeSUT(answers:[makeAnswer(question: "Q1", isCorrect: true)])
         let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
         XCTAssertEqual(cell.questionLabel.text, "Q1")
+    }
+    
+    func test_viewDidLoad_withCorrectAnswer_rendersAnswerText() {
+        let sut = makeSUT(answers:[makeAnswer(answer: "A1", isCorrect: true)])
+        let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
+        XCTAssertEqual(cell.answerLabel.text, "A1")
     }
     
     func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
@@ -64,7 +71,9 @@ class ResultViewControllerTests:XCTestCase {
         return makeAnswer(isCorrect: false)
     }
     
-    func makeAnswer(question:String = "", isCorrect:Bool) -> AnswerViewModel {
-        return AnswerViewModel(question: question, isCorrect: isCorrect)
+    func makeAnswer(question:String = "",
+                    answer:String = "",
+                    isCorrect:Bool) -> AnswerViewModel {
+        return AnswerViewModel(question: question, answer:answer, isCorrect: isCorrect)
     }
 }
