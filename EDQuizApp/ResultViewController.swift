@@ -11,6 +11,7 @@ import UIKit
 struct AnswerViewModel {
     let question:String
     let answer:String
+    let wrongAnswer:String?
     let isCorrect:Bool
 }
 
@@ -22,6 +23,7 @@ class CorrectAnswerCell: UITableViewCell {
 class WrongAnswerCell: UITableViewCell {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var wrongAnswerLabel: UILabel!
 }
 
 class ResultViewController:UIViewController, UITableViewDataSource {
@@ -55,6 +57,7 @@ class ResultViewController:UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswerCell") as! WrongAnswerCell
         cell.questionLabel.text = answer.question
         cell.answerLabel.text = answer.answer
+        cell.wrongAnswerLabel.text = answer.wrongAnswer
         return cell
     }
     

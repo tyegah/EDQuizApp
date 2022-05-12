@@ -69,11 +69,15 @@ class ResultViewControllerTests:XCTestCase {
     }
     
     func test_viewDidLoad_withWrongAnswer_configuresCell() {
-        let sut = makeSUT(answers:[makeAnswer(question: "Q1", answer: "A1", isCorrect: false)])
+        let sut = makeSUT(answers:[makeAnswer(question: "Q1",
+                                              answer: "A1",
+                                              wrongAnswer: "wrong",
+                                              isCorrect: false)])
         let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
         XCTAssertNotNil(cell)
         XCTAssertEqual(cell?.questionLabel.text, "Q1")
         XCTAssertEqual(cell?.answerLabel.text, "A1")
+        XCTAssertEqual(cell?.wrongAnswerLabel.text, "wrong")
     }
     
     // MARK: Helpers
@@ -91,7 +95,11 @@ class ResultViewControllerTests:XCTestCase {
     
     func makeAnswer(question:String = "",
                     answer:String = "",
+                    wrongAnswer:String? = nil,
                     isCorrect:Bool) -> AnswerViewModel {
-        return AnswerViewModel(question: question, answer:answer, isCorrect: isCorrect)
+        return AnswerViewModel(question: question,
+                               answer:answer,
+                               wrongAnswer:wrongAnswer,
+                               isCorrect: isCorrect)
     }
 }
