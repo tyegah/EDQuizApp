@@ -34,13 +34,19 @@ class ResultViewControllerTests:XCTestCase {
     // So we create the answer struct/view model (with just isCorrect as the attribute for now)
     // And we also create the CorrectAnswerCell (just a class is enough)
     func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
-        let sut = makeSUT(answers:[AnswerViewModel(isCorrect: true)])
+        let sut = makeSUT(answers:[makeAnswer(isCorrect: true)])
         let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
         XCTAssertNotNil(cell)
     }
     
+//    func test_viewDidLoad_withCorrectAnswer_rendersQuestionText() {
+//        let sut = makeSUT(answers:[AnswerViewModel(isCorrect: true)])
+//        let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
+//        XCTAssertNotNil(cell)
+//    }
+    
     func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
-        let sut = makeSUT(answers:[AnswerViewModel(isCorrect: false)])
+        let sut = makeSUT(answers:[makeAnswer(isCorrect: false)])
         let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
         XCTAssertNotNil(cell)
     }
@@ -55,6 +61,10 @@ class ResultViewControllerTests:XCTestCase {
     
     // This is created to prevent the tests breaking when the answer's type is changed
     func makeDummyAnswer() -> AnswerViewModel {
-        return AnswerViewModel(isCorrect: false)
+        return makeAnswer(isCorrect: false)
+    }
+    
+    func makeAnswer(question:String = "", isCorrect:Bool) -> AnswerViewModel {
+        return AnswerViewModel(question: question, isCorrect: isCorrect)
     }
 }

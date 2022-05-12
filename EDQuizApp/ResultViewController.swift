@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 struct AnswerViewModel {
+    let question:String
     let isCorrect:Bool
 }
 
