@@ -50,6 +50,7 @@ class ResultViewController:UIViewController, UITableViewDataSource {
         if answer.isCorrect {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CorrectAnswerCell") as! CorrectAnswerCell
             cell.questionLabel.text = answer.question
+            cell.answerLabel.text = answer.answer
             return cell
         }
         return WrongAnswerCell()
