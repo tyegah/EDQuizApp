@@ -52,10 +52,13 @@ class ResultViewController:UIViewController, UITableViewDataSource {
         if answer.isCorrect {
             return correctAnswerCell(for: answer)
         }
-        return tableView.dequeueReusableCell(withIdentifier: "WrongAnswerCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswerCell") as! WrongAnswerCell
+        cell.questionLabel.text = answer.question
+        cell.answerLabel.text = answer.answer
+        return cell
     }
     
-    private func correctAnswerCell(for answer:AnswerViewModel) -> CorrectAnswerCell {
+    private func correctAnswerCell(for answer:AnswerViewModel) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CorrectAnswerCell") as! CorrectAnswerCell
         cell.questionLabel.text = answer.question
         cell.answerLabel.text = answer.answer
