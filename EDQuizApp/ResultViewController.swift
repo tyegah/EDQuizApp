@@ -14,7 +14,7 @@ struct AnswerViewModel {
 }
 
 class CorrectAnswerCell: UITableViewCell {
-    
+    @IBOutlet weak var questionLabel: UILabel!
 }
 
 class WrongAnswerCell: UITableViewCell {
@@ -36,6 +36,7 @@ class ResultViewController:UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerLabel.text = summary
+        tableView.register(UINib(nibName: "CorrectAnswerCell", bundle: nil), forCellReuseIdentifier: "CorrectAnswerCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,6 +45,9 @@ class ResultViewController:UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let answer = answers[indexPath.row]
-        return answer.isCorrect ? CorrectAnswerCell() : WrongAnswerCell()
+        if answer.isCorrect {
+            return tableView.dequeueReusableCell(withIdentifier: "CorrectAnswerCell") as! CorrectAnswerCell
+        }
+        return WrongAnswerCell()
     }
 }
