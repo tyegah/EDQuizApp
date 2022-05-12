@@ -33,23 +33,33 @@ class ResultViewControllerTests:XCTestCase {
     // So we need to change the answer to be a type of struct (a view model) to be able to determine whether the answer is correct or not (by the isCorrect attribute on the answer struct
     // So we create the answer struct/view model (with just isCorrect as the attribute for now)
     // And we also create the CorrectAnswerCell (just a class is enough)
-    func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
-        let sut = makeSUT(answers:[makeAnswer(isCorrect: true)])
-        let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
-        XCTAssertNotNil(cell)
-    }
+//    func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
+//        let sut = makeSUT(answers:[makeAnswer(isCorrect: true)])
+//        let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
+//        XCTAssertNotNil(cell)
+//    }
     
     // On correct answer cell, we want to render the question and the answer on it. So, here we are testing if the cell is rendering the question and answer respectively
-    func test_viewDidLoad_withCorrectAnswer_rendersQuestionText() {
-        let sut = makeSUT(answers:[makeAnswer(question: "Q1", isCorrect: true)])
-        let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
-        XCTAssertEqual(cell.questionLabel.text, "Q1")
-    }
+//    func test_viewDidLoad_withCorrectAnswer_rendersQuestionText() {
+//        let sut = makeSUT(answers:[makeAnswer(question: "Q1", isCorrect: true)])
+//        let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
+//        XCTAssertEqual(cell.questionLabel.text, "Q1")
+//    }
+//
+//    func test_viewDidLoad_withCorrectAnswer_rendersAnswerText() {
+//        let sut = makeSUT(answers:[makeAnswer(answer: "A1", isCorrect: true)])
+//        let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
+//        XCTAssertEqual(cell.answerLabel.text, "A1")
+//    }
     
-    func test_viewDidLoad_withCorrectAnswer_rendersAnswerText() {
-        let sut = makeSUT(answers:[makeAnswer(answer: "A1", isCorrect: true)])
-        let cell = sut.tableView.cell(at: 0) as! CorrectAnswerCell
-        XCTAssertEqual(cell.answerLabel.text, "A1")
+    // REFACTOR
+    // Here we combined the previous 3 tests into one
+    func test_viewDidLoad_withCorrectAnswer_configuresCell() {
+        let sut = makeSUT(answers:[makeAnswer(question: "Q1", answer: "A1", isCorrect: true)])
+        let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
+        XCTAssertNotNil(cell)
+        XCTAssertEqual(cell?.questionLabel.text, "Q1")
+        XCTAssertEqual(cell?.answerLabel.text, "A1")
     }
     
     func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
