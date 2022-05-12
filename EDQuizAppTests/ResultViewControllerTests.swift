@@ -20,10 +20,10 @@ class ResultViewControllerTests:XCTestCase {
 //        XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
 //    }
 //
-    
+//
     func test_viewDidLoad_rendersAnswers() {
         XCTAssertEqual(makeSUT(answers: []).tableView.numberOfRows(inSection: 0), 0)
-        XCTAssertEqual(makeSUT(answers: [makeDummyAnswer()]).tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(makeSUT(answers: [makeAnswer()]).tableView.numberOfRows(inSection: 0), 1)
     }
     
     // Because we want the tableview to render two types of cell,
@@ -55,24 +55,24 @@ class ResultViewControllerTests:XCTestCase {
     // REFACTOR
     // Here we combined the previous 3 tests into one
     func test_viewDidLoad_withCorrectAnswer_configuresCell() {
-        let sut = makeSUT(answers:[makeAnswer(question: "Q1", answer: "A1", isCorrect: true)])
+        let sut = makeSUT(answers:[makeAnswer(question: "Q1", answer: "A1")])
         let cell = sut.tableView.cell(at: 0) as? CorrectAnswerCell
         XCTAssertNotNil(cell)
         XCTAssertEqual(cell?.questionLabel.text, "Q1")
         XCTAssertEqual(cell?.answerLabel.text, "A1")
     }
     
-    func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
-        let sut = makeSUT(answers:[makeAnswer(isCorrect: false)])
-        let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
-        XCTAssertNotNil(cell)
-    }
+    // This is already covered in the next test
+//    func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
+//        let sut = makeSUT(answers:[makeAnswer()])
+//        let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
+//        XCTAssertNotNil(cell)
+//    }
     
     func test_viewDidLoad_withWrongAnswer_configuresCell() {
         let sut = makeSUT(answers:[makeAnswer(question: "Q1",
                                               answer: "A1",
-                                              wrongAnswer: "wrong",
-                                              isCorrect: false)])
+                                              wrongAnswer: "wrong")])
         let cell = sut.tableView.cell(at: 0) as? WrongAnswerCell
         XCTAssertNotNil(cell)
         XCTAssertEqual(cell?.questionLabel.text, "Q1")
@@ -89,17 +89,16 @@ class ResultViewControllerTests:XCTestCase {
     }
     
     // This is created to prevent the tests breaking when the answer's type is changed
-    func makeDummyAnswer() -> AnswerViewModel {
-        return makeAnswer(isCorrect: false)
-    }
+    // This dummy is no longer needed
+//    func makeDummyAnswer() -> AnswerViewModel {
+//        return makeAnswer(isCorrect: false)
+//    }
     
     func makeAnswer(question:String = "",
                     answer:String = "",
-                    wrongAnswer:String? = nil,
-                    isCorrect:Bool) -> AnswerViewModel {
+                    wrongAnswer:String? = nil) -> AnswerViewModel {
         return AnswerViewModel(question: question,
                                answer:answer,
-                               wrongAnswer:wrongAnswer,
-                               isCorrect: isCorrect)
+                               wrongAnswer:wrongAnswer)
     }
 }

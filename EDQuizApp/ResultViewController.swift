@@ -12,7 +12,10 @@ struct AnswerViewModel {
     let question:String
     let answer:String
     let wrongAnswer:String?
-    let isCorrect:Bool
+    
+    // Here isCorrect is no longer needed because we already have the wrongAnswer variable
+    // Therefore we can just check if the answer is wrong from the wrongAnswer variable
+//    let isCorrect:Bool
 }
 
 class CorrectAnswerCell: UITableViewCell {
@@ -51,9 +54,13 @@ class ResultViewController:UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let answer = answers[indexPath.row]
-        if answer.isCorrect {
+        if answer.wrongAnswer == nil {
             return correctAnswerCell(for: answer)
         }
+        return wrongAnswerCell(for: answer)
+    }
+    
+    private func wrongAnswerCell(for answer:AnswerViewModel) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswerCell") as! WrongAnswerCell
         cell.questionLabel.text = answer.question
         cell.answerLabel.text = answer.answer
