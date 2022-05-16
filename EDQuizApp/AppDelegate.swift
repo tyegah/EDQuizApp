@@ -13,6 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let resultViewController = ResultViewController(summary: "You got 1/2 answers correct", answers: [AnswerViewModel(question: "Question 1??", answer: "You got this correct", wrongAnswer: nil), AnswerViewModel(question: "Question 2??", answer: "You got this wrong!", wrongAnswer: "The wrong answer")])
+        window?.rootViewController = UINavigationController(rootViewController: resultViewController)
+        window?.makeKeyAndVisible()
         return true
     }
 
