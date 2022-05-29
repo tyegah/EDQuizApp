@@ -10,7 +10,7 @@ import EDGameEngine
 import UIKit
 
 class NavigationControllerRouter: Router {
-    let navigationController: UINavigationController
+    private let navigationController: UINavigationController
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
