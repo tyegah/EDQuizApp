@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4DD5342843BF5400CAA4F8 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */; };
 		0D6040762843BC3300ED683A /* EDGameEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; };
 		0D6040772843BC3300ED683A /* EDGameEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0D60407A2843BD3F00ED683A /* NavigationControllerRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */; };
 		0DD2FFB0282AC7A200874737 /* ResultViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */; };
 		0DD2FFB2282AC84300874737 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2FFB1282AC84300874737 /* ResultViewController.swift */; };
 		0DD2FFB4282AC8F100874737 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD2FFB3282AC8F100874737 /* ResultViewController.xib */; };
@@ -62,7 +64,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		0D6040752843BC3300ED683A /* EDGameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EDGameEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTests.swift; sourceTree = "<group>"; };
 		0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewControllerTests.swift; sourceTree = "<group>"; };
 		0DD2FFB1282AC84300874737 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		0DD2FFB3282AC8F100874737 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -161,6 +165,7 @@
 				0DF01443282D0697001D85C0 /* WrongAnswerCell.xib */,
 				0DF014472832482A001D85C0 /* AnswerViewModel.swift */,
 				0DF014492832484F001D85C0 /* UITableView+Extensions.swift */,
+				0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */,
 			);
 			path = EDQuizApp;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				0DF78C2C28257B3C00B7946F /* QuestionViewControllerTests.swift */,
 				0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */,
 				0DF0141B282AD483001D85C0 /* TableViewHelpers.swift */,
+				0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */,
 			);
 			path = EDQuizAppTests;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				0DF014482832482B001D85C0 /* AnswerViewModel.swift in Sources */,
 				0DF0144A28324850001D85C0 /* UITableView+Extensions.swift in Sources */,
 				0DF0144E28324885001D85C0 /* WrongAnswerCell.swift in Sources */,
+				0D4DD5342843BF5400CAA4F8 /* NavigationControllerRouter.swift in Sources */,
 				0DF78C2F28257C5F00B7946F /* QuestionViewController.swift in Sources */,
 				0DD2FFB2282AC84300874737 /* ResultViewController.swift in Sources */,
 			);
@@ -334,6 +341,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D60407A2843BD3F00ED683A /* NavigationControllerRouterTests.swift in Sources */,
 				0DF78C2D28257B3C00B7946F /* QuestionViewControllerTests.swift in Sources */,
 				0DF0141C282AD483001D85C0 /* TableViewHelpers.swift in Sources */,
 				0DD2FFB0282AC7A200874737 /* ResultViewControllerTests.swift in Sources */,
