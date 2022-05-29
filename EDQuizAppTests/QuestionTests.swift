@@ -21,8 +21,8 @@ class QuestionTests: XCTestCase {
         let sut = Question.multipleAnswer(type)
         XCTAssertEqual(sut.hashValue, type.hashValue)
     }
-//
-//    func test_equal_singleAnswer_isEqual() {
-//        XCTAssertEqual(Question.singleAnswer("a string"), Question.singleAnswer("a string"))
-//    }
+
+    func test_equal_singleAnswer_isEqual() {
+        XCTAssertEqual(Question.singleAnswer("a string"), Question.singleAnswer("a string"))
+    }
 }
