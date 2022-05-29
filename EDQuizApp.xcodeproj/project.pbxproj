@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D6040762843BC3300ED683A /* EDGameEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; };
+		0D6040772843BC3300ED683A /* EDGameEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0DD2FFB0282AC7A200874737 /* ResultViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */; };
 		0DD2FFB2282AC84300874737 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2FFB1282AC84300874737 /* ResultViewController.swift */; };
 		0DD2FFB4282AC8F100874737 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DD2FFB3282AC8F100874737 /* ResultViewController.xib */; };
@@ -45,7 +47,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0D6040782843BC3400ED683A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0D6040772843BC3300ED683A /* EDGameEngine.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0D6040752843BC3300ED683A /* EDGameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EDGameEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewControllerTests.swift; sourceTree = "<group>"; };
 		0DD2FFB1282AC84300874737 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		0DD2FFB3282AC8F100874737 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -76,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6040762843BC3300ED683A /* EDGameEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D6040702843BB6F00ED683A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D6040752843BC3300ED683A /* EDGameEngine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0DF78BF028257A8000B7946F = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +129,7 @@
 				0DF78C1228257A8400B7946F /* EDQuizAppTests */,
 				0DF78C1C28257A8400B7946F /* EDQuizAppUITests */,
 				0DF78BFA28257A8000B7946F /* Products */,
+				0D6040702843BB6F00ED683A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +194,7 @@
 				0DF78BF528257A8000B7946F /* Sources */,
 				0DF78BF628257A8000B7946F /* Frameworks */,
 				0DF78BF728257A8000B7946F /* Resources */,
+				0D6040782843BC3400ED683A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

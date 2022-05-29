@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EDGameEngine
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
