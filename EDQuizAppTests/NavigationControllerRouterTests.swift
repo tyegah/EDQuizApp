@@ -65,7 +65,7 @@ class NavigationControllerRouterTests:XCTestCase {
 //        XCTAssertEqual(navigationController.viewControllers.first, viewController)
 //    }
     
-    let navigationController = FakeNavigationController()
+    let navigationController = NonAnimatedNavigationController()
     let factoryStub = ViewControllerFactoryStub()
     lazy var sut: NavigationControllerRouter = {
         return NavigationControllerRouter(self.navigationController, factory: self.factoryStub)
@@ -98,7 +98,7 @@ class NavigationControllerRouterTests:XCTestCase {
     // We need to create a fake nav controller here because on the
     // NavigationControllerRouter, we changed the animated parameter on the pushViewController to be true, and it affects the tests. So, in order to make it not affect the test, we create this class
     
-    class FakeNavigationController: UINavigationController {
+    class NonAnimatedNavigationController: UINavigationController {
         override func pushViewController(_ viewController: UIViewController, animated: Bool) {
             super.pushViewController(viewController, animated: false) // we make the animation false because we only need to the test navigation controller stack in this test class.
         }
