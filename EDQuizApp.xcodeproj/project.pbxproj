@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D4DD5342843BF5400CAA4F8 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */; };
+		0D4DD5362843DB4200CAA4F8 /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DD5352843DB4200CAA4F8 /* QuestionTests.swift */; };
 		0D6040762843BC3300ED683A /* EDGameEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; };
 		0D6040772843BC3300ED683A /* EDGameEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D60407A2843BD3F00ED683A /* NavigationControllerRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
+		0D4DD5352843DB4200CAA4F8 /* QuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTests.swift; sourceTree = "<group>"; };
 		0D6040752843BC3300ED683A /* EDGameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EDGameEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTests.swift; sourceTree = "<group>"; };
 		0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewControllerTests.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */,
 				0DF0141B282AD483001D85C0 /* TableViewHelpers.swift */,
 				0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */,
+				0D4DD5352843DB4200CAA4F8 /* QuestionTests.swift */,
 			);
 			path = EDQuizAppTests;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4DD5362843DB4200CAA4F8 /* QuestionTests.swift in Sources */,
 				0D60407A2843BD3F00ED683A /* NavigationControllerRouterTests.swift in Sources */,
 				0DF78C2D28257B3C00B7946F /* QuestionViewControllerTests.swift in Sources */,
 				0DF0141C282AD483001D85C0 /* TableViewHelpers.swift in Sources */,
