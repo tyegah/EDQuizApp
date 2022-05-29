@@ -32,7 +32,7 @@ class QuestionTests: XCTestCase {
         XCTAssertNotEqual(Question.singleAnswer("a string"), Question.singleAnswer("another string"))
     }
     
-//    func test_equal_multipleAnswer_isEqual() {
-//        XCTAssertEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("a string"))
-//    }
+    func test_equal_multipleAnswer_isEqual() {
+        XCTAssertEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("a string"))
+    }
 }
