@@ -17,7 +17,7 @@ class NavigationControllerRouter: Router {
     }
     
     func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
-        
+        navigationController.pushViewController(UIViewController(), animated: false)
     }
     
     func routeTo(result: Result<String, String>) {
