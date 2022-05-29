@@ -58,9 +58,31 @@ class NavigationControllerRouterTests:XCTestCase {
         let sut = NavigationControllerRouter(navigationController, factory: viewControllerFactoryStub)
         // 2. Call the functionality that we're testing
         sut.routeTo(question: "Q1", answerCallback: { _ in })
-//        sut.routeTo(question: "Q2", answerCallback: { _ in })
         // 1. determine the expected result
+        XCTAssertEqual(navigationController.viewControllers.count, 1)
         XCTAssertEqual(navigationController.viewControllers.first, viewController)
+    }
+    
+    func test_routeToSecondQuestion_presentsCorrectQuestionController() {
+        // 3. Setup the required classes (like DI classes) and the SUT
+        // first, we need the navigation controller
+        let navigationController = UINavigationController()
+        // we also need to create the stub of the factory because it is now a requirement to create the SUT
+        let viewControllerFactoryStub = ViewControllerFactoryStub()
+        // we stub the viewcontrollers into the factory
+        let viewController = UIViewController()
+        viewControllerFactoryStub.stub(question: "Q1", with: viewController)
+        let secondViewController = UIViewController()
+        viewControllerFactoryStub.stub(question: "Q2", with: secondViewController)
+        // then, we need the SUT, which is a class that's not created yet but will be created at this point
+        let sut = NavigationControllerRouter(navigationController, factory: viewControllerFactoryStub)
+        // 2. Call the functionality that we're testing
+        sut.routeTo(question: "Q1", answerCallback: { _ in })
+        sut.routeTo(question: "Q2", answerCallback: { _ in })
+        // 1. determine the expected result
+        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        XCTAssertEqual(navigationController.viewControllers.first, viewController)
+        XCTAssertEqual(navigationController.viewControllers.last, secondViewController)
     }
     
     class ViewControllerFactoryStub: ViewControllerFactory {
