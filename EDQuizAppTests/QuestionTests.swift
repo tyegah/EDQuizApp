@@ -35,4 +35,8 @@ class QuestionTests: XCTestCase {
     func test_equal_multipleAnswer_isEqual() {
         XCTAssertEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("a string"))
     }
+    
+    func test_notEqual_multipleAnswer_isNotEqual() {
+        XCTAssertNotEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("another string"))
+    }
 }
