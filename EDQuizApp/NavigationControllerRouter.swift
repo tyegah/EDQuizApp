@@ -9,37 +9,6 @@ import Foundation
 import EDGameEngine
 import UIKit
 
-// We decided to creata this question as enum because
-// Question should not be responsible for the answer
-// and this way it will separate the concern between question and answer
-// The hashable comformance is because the Engine requires the Question to be hashable
-// Then we can create the question this way : Question.singleAnswer("The question?")
-enum Question<T:Hashable>:Hashable {
-    case singleAnswer(T)
-    case multipleAnswer(T)
-    
-    func hash(into hasher: inout Hasher) {
-        switch self {
-        case .singleAnswer(let value):
-            hasher.combine(value)
-        case .multipleAnswer(let value):
-            hasher.combine(value)
-        }
-    }
-    
-    // we need to implement this because of the hashable protocol
-    static func ==(lhs:Question<T>, rhs:Question<T>) -> Bool {
-        switch (lhs, rhs) {
-        case (.singleAnswer(let a), .singleAnswer(let b)):
-            return a == b
-        case (.multipleAnswer(let a), .multipleAnswer(let b)):
-            return a == b
-        default:
-            return false
-        }
-    }
-}
-
 protocol ViewControllerFactory {
     func questionViewController(for question:String, answerCallback:@escaping (String) -> Void) -> UIViewController
 }

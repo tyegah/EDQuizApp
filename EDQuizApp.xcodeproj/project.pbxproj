@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D4DD5342843BF5400CAA4F8 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */; };
 		0D4DD5362843DB4200CAA4F8 /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DD5352843DB4200CAA4F8 /* QuestionTests.swift */; };
+		0D4DD5382843E12700CAA4F8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4DD5372843E12700CAA4F8 /* Question.swift */; };
 		0D6040762843BC3300ED683A /* EDGameEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; };
 		0D6040772843BC3300ED683A /* EDGameEngine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6040752843BC3300ED683A /* EDGameEngine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D60407A2843BD3F00ED683A /* NavigationControllerRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		0D4DD5352843DB4200CAA4F8 /* QuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTests.swift; sourceTree = "<group>"; };
+		0D4DD5372843E12700CAA4F8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		0D6040752843BC3300ED683A /* EDGameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EDGameEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6040792843BD3F00ED683A /* NavigationControllerRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTests.swift; sourceTree = "<group>"; };
 		0DD2FFAF282AC7A200874737 /* ResultViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewControllerTests.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				0DF014472832482A001D85C0 /* AnswerViewModel.swift */,
 				0DF014492832484F001D85C0 /* UITableView+Extensions.swift */,
 				0D4DD5332843BF5400CAA4F8 /* NavigationControllerRouter.swift */,
+				0D4DD5372843E12700CAA4F8 /* Question.swift */,
 			);
 			path = EDQuizApp;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				0DF0144C2832486B001D85C0 /* CorrectAnswerCell.swift in Sources */,
 				0DF014482832482B001D85C0 /* AnswerViewModel.swift in Sources */,
 				0DF0144A28324850001D85C0 /* UITableView+Extensions.swift in Sources */,
+				0D4DD5382843E12700CAA4F8 /* Question.swift in Sources */,
 				0DF0144E28324885001D85C0 /* WrongAnswerCell.swift in Sources */,
 				0D4DD5342843BF5400CAA4F8 /* NavigationControllerRouter.swift in Sources */,
 				0DF78C2F28257C5F00B7946F /* QuestionViewController.swift in Sources */,
