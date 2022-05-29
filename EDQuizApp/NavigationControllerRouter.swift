@@ -29,7 +29,7 @@ enum Question<T:Hashable>:Hashable {
     
     // we need to implement this because of the hashable protocol
     static func ==(lhs:Question<T>, rhs:Question<T>) -> Bool {
-        return false
+        return true
     }
 }
 

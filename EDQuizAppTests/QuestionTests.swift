@@ -10,6 +10,7 @@ import XCTest
 @testable import EDQuizApp
 
 class QuestionTests: XCTestCase {
+    // Hashvalue tests
     func test_hashValue_singleAnswer_returnsTypeHash() {
         let type = "a string"
         let sut = Question.singleAnswer(type)
@@ -22,6 +23,7 @@ class QuestionTests: XCTestCase {
         XCTAssertEqual(sut.hashValue, type.hashValue)
     }
 
+    // Equatable tests
     func test_equal_singleAnswer_isEqual() {
         XCTAssertEqual(Question.singleAnswer("a string"), Question.singleAnswer("a string"))
     }
