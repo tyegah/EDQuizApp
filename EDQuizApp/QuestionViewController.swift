@@ -13,8 +13,8 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
     
-    private var question:String = ""
-    private var options:[String] = []
+    private(set) var question:String = "" // This is need to have private set and internal get to make sure we can access the variable from outside for testing purposes
+    private(set) var options:[String] = []
     private var selection: (([String]) -> Void)? = nil
     private let reuseIdentifier = "Cell"
     
