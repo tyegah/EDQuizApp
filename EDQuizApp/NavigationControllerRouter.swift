@@ -12,6 +12,7 @@ import UIKit
 protocol ViewControllerFactory {
     // We change the question from string to Question enum to make the responsibility of deciding which controller to create falls in the factory implementation
     func questionViewController(for question:QuestionType<String>, answerCallback:@escaping (String) -> Void) -> UIViewController
+    func resultsViewController(for result: Result<QuestionType<String>, String>) -> UIViewController
 }
 
 class NavigationControllerRouter: Router {
@@ -29,6 +30,7 @@ class NavigationControllerRouter: Router {
     }
     
     func routeTo(result: Result<QuestionType<String>, String>) {
-        
+        let viewController = factory.resultsViewController(for: result)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

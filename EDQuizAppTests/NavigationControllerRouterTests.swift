@@ -9,6 +9,7 @@ import Foundation
 import XCTest
 import UIKit
 
+@testable import EDGameEngine
 @testable import EDQuizApp
 
 class NavigationControllerRouterTests:XCTestCase {
@@ -95,15 +96,20 @@ class NavigationControllerRouterTests:XCTestCase {
         XCTAssertTrue(callbackFired)
     }
     
-//    func test_routeToResult_presentsCorrectResultController() {
-//        let viewController = UIViewController()
-//        let result = Result()
-//        factoryStub.stub(result: result, with: viewController)
-//        sut.routeTo(result: result)
-//        // 1. determine the expected result
-//        XCTAssertEqual(navigationController.viewControllers.count, 2)
-//        XCTAssertEqual(navigationController.viewControllers.first, viewController)
-//    }
+    func test_routeToResult_presentsCorrectResultController() {
+        let viewController = UIViewController()
+        let result = Result(answers: [QuestionType.singleAnswer("Q1"):"A1"], score: 10)
+        let secondViewController = UIViewController()
+        let secondResult = Result(answers: [QuestionType.singleAnswer("Q2"):"A2"], score: 20)
+        factoryStub.stub(result: result, with: viewController)
+        factoryStub.stub(result: secondResult, with: secondViewController)
+        sut.routeTo(result: result)
+        sut.routeTo(result: secondResult)
+        // 1. determine the expected result
+        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        XCTAssertEqual(navigationController.viewControllers.first, viewController)
+        XCTAssertEqual(navigationController.viewControllers.last, secondViewController)
+    }
     
     // We need to create a fake nav controller here because on the
     // NavigationControllerRouter, we changed the animated parameter on the pushViewController to be true, and it affects the tests. So, in order to make it not affect the test, we create this class
@@ -119,15 +125,41 @@ class NavigationControllerRouterTests:XCTestCase {
         var answerCallbacks = [QuestionType<String>: (String) -> Void]()
         // We hold the value of the stubbed viewcontrollers here
         private var stubbedQuestions = [QuestionType<String>:UIViewController]()
+        private var stubbedResults = [Result<QuestionType<String>, String>:UIViewController]()
         
         // Here we create a stub function to insert the viewcontroller
         func stub(question:QuestionType<String>, with viewController: UIViewController) {
             stubbedQuestions[question] = viewController
         }
         
+        // Here we create a stub function to insert the viewcontroller
+        func stub(result:Result<QuestionType<String>, String>, with viewController: UIViewController) {
+            stubbedResults[result] = viewController
+        }
+        
         func questionViewController(for question: QuestionType<String>, answerCallback: @escaping (String) -> Void) -> UIViewController {
             self.answerCallbacks[question] = answerCallback
             return stubbedQuestions[question] ?? UIViewController()
         }
+        
+        func resultsViewController(for result: Result<QuestionType<String>, String>) -> UIViewController {
+            self.stubbedResults[result] ?? UIViewController()
+        }
+    }
+}
+
+
+// We use fake hashable here just for the testing purposes
+extension Result: Hashable {
+//    static func create(answers:[Question:Answer], score:Int) -> Result {
+//        return Result(answers: answers, score: score)
+//    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(score.hashValue)
+    }
+    
+    public static func ==(lhs:Result, rhs:Result) -> Bool {
+        return (lhs.score == rhs.score)
     }
 }
