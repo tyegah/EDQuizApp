@@ -10,7 +10,7 @@ import XCTest
 @testable import EDQuizApp
 
 class iOSViewControllerFactoryTests:XCTestCase {
-    func test_questionViewController_createsController() {
+    func test_questionViewController_createsControllerWithQuestion() {
         // 3. Create the SUT
         let question = QuestionType.singleAnswer("Q1")
         let options = ["A1", "A2"]
