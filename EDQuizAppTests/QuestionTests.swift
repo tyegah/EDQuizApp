@@ -9,30 +9,30 @@ import Foundation
 import XCTest
 @testable import EDQuizApp
 
-class QuestionTests: XCTestCase {
+class QuestionTypeTests: XCTestCase {
     // Hashvalue tests
     func test_hashValue_singleAnswer_returnsTypeHash() {
         let type = "a string"
-        let sut = Question.singleAnswer(type)
+        let sut = QuestionType.singleAnswer(type)
         XCTAssertEqual(sut.hashValue, type.hashValue)
     }
     
     func test_hashValue_multipleAnswer_returnsTypeHash() {
         let type = "a string"
-        let sut = Question.multipleAnswer(type)
+        let sut = QuestionType.multipleAnswer(type)
         XCTAssertEqual(sut.hashValue, type.hashValue)
     }
     
     // Equatable tests
     func test_equalQuestion_isEqual() {
-        XCTAssertEqual(Question.singleAnswer("a string"), Question.singleAnswer("a string"))
-        XCTAssertEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("a string"))
+        XCTAssertEqual(QuestionType.singleAnswer("a string"), QuestionType.singleAnswer("a string"))
+        XCTAssertEqual(QuestionType.multipleAnswer("a string"), QuestionType.multipleAnswer("a string"))
     }
     
     func test_notEqualQuestion_isNotEqual() {
-        XCTAssertNotEqual(Question.singleAnswer("a string"), Question.singleAnswer("another string"))
-        XCTAssertNotEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("another string"))
-        XCTAssertNotEqual(Question.singleAnswer("a string"), Question.multipleAnswer("another string"))
-        XCTAssertNotEqual(Question.singleAnswer("a string"), Question.multipleAnswer("a string"))
+        XCTAssertNotEqual(QuestionType.singleAnswer("a string"), QuestionType.singleAnswer("another string"))
+        XCTAssertNotEqual(QuestionType.multipleAnswer("a string"), QuestionType.multipleAnswer("another string"))
+        XCTAssertNotEqual(QuestionType.singleAnswer("a string"), QuestionType.multipleAnswer("another string"))
+        XCTAssertNotEqual(QuestionType.singleAnswer("a string"), QuestionType.multipleAnswer("a string"))
     }
 }

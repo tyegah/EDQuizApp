@@ -11,7 +11,7 @@ import UIKit
 
 protocol ViewControllerFactory {
     // We change the question from string to Question enum to make the responsibility of deciding which controller to create falls in the factory implementation
-    func questionViewController(for question:Question<String>, answerCallback:@escaping (String) -> Void) -> UIViewController
+    func questionViewController(for question:QuestionType<String>, answerCallback:@escaping (String) -> Void) -> UIViewController
 }
 
 class NavigationControllerRouter: Router {
@@ -23,12 +23,12 @@ class NavigationControllerRouter: Router {
         self.factory = factory
     }
     
-    func routeTo(question: Question<String>, answerCallback: @escaping (String) -> Void) {
+    func routeTo(question: QuestionType<String>, answerCallback: @escaping (String) -> Void) {
         let viewController = factory.questionViewController(for: question, answerCallback: answerCallback)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func routeTo(result: Result<Question<String>, String>) {
+    func routeTo(result: Result<QuestionType<String>, String>) {
         
     }
 }

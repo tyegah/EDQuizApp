@@ -13,7 +13,7 @@ import Foundation
 // The hashable comformance is because the Engine requires the Question to be hashable
 // Then we can create the question this way : Question.singleAnswer("The question?")
 // The type is also generic so we can use any kind of question (e.g: if there are texts or images)
-enum Question<T:Hashable>:Hashable {
+enum QuestionType<T:Hashable>:Hashable {
     case singleAnswer(T)
     case multipleAnswer(T)
     
@@ -27,7 +27,7 @@ enum Question<T:Hashable>:Hashable {
     }
     
     // we need to implement this because of the hashable protocol
-    static func ==(lhs:Question<T>, rhs:Question<T>) -> Bool {
+    static func ==(lhs:QuestionType<T>, rhs:QuestionType<T>) -> Bool {
         switch (lhs, rhs) {
         case (.singleAnswer(let a), .singleAnswer(let b)):
             return a == b
