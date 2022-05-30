@@ -12,12 +12,14 @@ import XCTest
 class iOSViewControllerFactoryTests:XCTestCase {
     func test_questionViewController_createsController() {
         // 3. Create the SUT
-        let sut = iOSViewControllerFactory(options: [:])
+        let question = QuestionType.singleAnswer("Q1")
+        let options = ["A1", "A2"]
+        let sut = iOSViewControllerFactory(options: [question: options])
         
         // 2. call the functionality that we're testing
         let viewController = sut.questionViewController(for: QuestionType.singleAnswer("Q1"), answerCallback: { _ in}) as? QuestionViewController
         // 1. Define the expectation
-        XCTAssertNotNil(viewController)
+        XCTAssertEqual(viewController?.question, "Q1")
     }
     
     // Because the QuestionViewController needs options, we need to check if the options are set correctly
